@@ -46,3 +46,7 @@ bleno.on('advertisingStart', function(error) {
     bleno.setServices([service]);
   }
 });
+
+bleno.on('servicesSet', function(error) {
+  console.log('on -> servicesSet: ' + (error ? 'error ' + error : 'success'));
+});
