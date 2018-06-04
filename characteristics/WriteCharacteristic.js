@@ -5,7 +5,7 @@ module.exports = function(Characteristic, onWriteCallback) {
   WriteCharacteristic.start = function() {
     this.init({
       uuid: '2D49A86E-02D8-46A9-84E8-636488225FF5',
-      properties: ['write'],
+      properties: ['writeWithoutResponse'],
       descriptors: [
         {
           uuid: '2cb6a875-4810-48d4-b044-17dcb2b75e64',
