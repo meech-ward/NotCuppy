@@ -17,11 +17,11 @@ const bleno = require('bleno');
 const Characteristic = require('./characteristics/Characteristic')(bleno);
 const PrimaryService = require('./characteristics/PrimaryService')(bleno);
 
-const WriteCharacteristic = require('./characteristics/WriteCharacteristic')(Characteristic);
+const WriteCharacteristic = require('./characteristics/WriteCharacteristic')(Characteristic, changeMotorState);
 const StatusCharacteristic = require('./characteristics/StatusCharacteristic')(Characteristic);
 
 
-const writeCharacteristic = Object.create(WriteCharacteristic, changeMotorState);
+const writeCharacteristic = Object.create(WriteCharacteristic);
 writeCharacteristic.start();
 const statusCharacteristic = Object.create(StatusCharacteristic);
 statusCharacteristic.start(writeCharacteristic);
