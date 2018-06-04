@@ -1,16 +1,14 @@
 module.exports = function(Characteristic) {
 
-  const secret = '12345';
-
   const WriteCharacteristic = Object.create(Characteristic);
 
   WriteCharacteristic.start = function() {
     this.init({
-      uuid: 'd271',
+      uuid: '2D49A86E-02D8-46A9-84E8-636488225FF5',
       properties: ['write'],
       descriptors: [
         {
-          uuid: '2901',
+          uuid: '2cb6a875-4810-48d4-b044-17dcb2b75e64',
           value: 'Writer'
         }
       ]
@@ -20,10 +18,12 @@ module.exports = function(Characteristic) {
   WriteCharacteristic.onWriteRequest = function(data, offset, withoutResponse, callback) {
     let status;
 
-    if (data.toString() === secret) {
-      status = 'do thing';
+    if (data.toString() === "stop") {
+      status = 'Stop!!!!';
+    } else if (data.toString() === "start") {
+      status = 'Start!!!!';
     } else {
-      status = 'invalid code';
+      status = 'unknown ' + data.toString()
     }
 
     console.log(`data: ${data}`);

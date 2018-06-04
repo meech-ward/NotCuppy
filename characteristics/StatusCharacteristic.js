@@ -4,7 +4,7 @@ module.exports = function(Characteristic) {
 
   StatusCharacteristic.start = function(characteristic) {
     this.init({
-      uuid: 'd272',
+      uuid: 'aa9e791f-e9e4-414c-a8d6-fc9dd6fd2c17',
       properties: ['notify'],
       descriptors: [
         {

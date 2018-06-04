@@ -13,13 +13,13 @@ const statusCharacteristic = Object.create(StatusCharacteristic);
 statusCharacteristic.start(writeCharacteristic);
 
 const service = Object.create(PrimaryService);
-service.init('d270', [writeCharacteristic, statusCharacteristic]);
+service.init('A7229812-D372-495B-B51D-B54C408A3659', [writeCharacteristic, statusCharacteristic]);
 
 bleno.on('stateChange', function(state) {
   console.log('on -> stateChange: ' + state);
 
   if (state === 'poweredOn') {
-    bleno.startAdvertising('Test App', [service.uuid]);
+    bleno.startAdvertising('NotCuppy', [service.uuid]);
   } else {
     bleno.stopAdvertising();
   }
