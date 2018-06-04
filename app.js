@@ -1,3 +1,17 @@
+function changeMotorState(state) {
+  let status;
+
+  if (state === "stop") {
+    status = 'Stop!!!!';
+  } else if (state === "start") {
+    status = 'Start!!!!';
+  } else {
+    status = 'unknown ' + state
+  }
+
+  console.log(`status: ${status}`);
+}
+
 const bleno = require('bleno');
 
 const Characteristic = require('./characteristics/Characteristic')(bleno);
@@ -7,7 +21,7 @@ const WriteCharacteristic = require('./characteristics/WriteCharacteristic')(Cha
 const StatusCharacteristic = require('./characteristics/StatusCharacteristic')(Characteristic);
 
 
-const writeCharacteristic = Object.create(WriteCharacteristic);
+const writeCharacteristic = Object.create(WriteCharacteristic, changeMotorState);
 writeCharacteristic.start();
 const statusCharacteristic = Object.create(StatusCharacteristic);
 statusCharacteristic.start(writeCharacteristic);

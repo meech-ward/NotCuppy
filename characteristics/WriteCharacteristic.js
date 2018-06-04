@@ -1,4 +1,4 @@
-module.exports = function(Characteristic) {
+module.exports = function(Characteristic, onWriteCallback) {
 
   const WriteCharacteristic = Object.create(Characteristic);
 
@@ -16,22 +16,24 @@ module.exports = function(Characteristic) {
   };
 
   WriteCharacteristic.onWriteRequest = function(data, offset, withoutResponse, callback) {
-    let status;
+    // let status;
 
-    if (data.toString() === "stop") {
-      status = 'Stop!!!!';
-    } else if (data.toString() === "start") {
-      status = 'Start!!!!';
-    } else {
-      status = 'unknown ' + data.toString()
-    }
+    // if (data.toString() === "stop") {
+    //   status = 'Stop!!!!';
+    // } else if (data.toString() === "start") {
+    //   status = 'Start!!!!';
+    // } else {
+    //   status = 'unknown ' + data.toString()
+    // }
 
-    console.log(`data: ${data}`);
-    console.log(`status: ${status}`);
+    onWriteCallback(data.toString());
 
-    callback(this.RESULT_SUCCESS);
+    // console.log(`data: ${data}`);
+    // console.log(`status: ${status}`);
 
-    this.emit('status', status);
+    // callback(this.RESULT_SUCCESS);
+
+    // this.emit('status', status);
   };
 
   return WriteCharacteristic;
