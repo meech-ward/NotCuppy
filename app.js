@@ -1,9 +1,13 @@
+const motors = require('./motors');
+
 function changeMotorState(state) {
   let status;
 
   if (state === "stop") {
     status = 'Stop!!!!';
+    motors.turnOff();
   } else if (state === "start") {
+    motors.turnOn();
     status = 'Start!!!!';
   } else {
     status = 'unknown ' + state
