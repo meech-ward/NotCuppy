@@ -1,16 +1,16 @@
 {
-  "name": "bleno-test",
+  "name": "serial",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bleno": "^0.5.0",
-    "onoff": "^3.1.0"
+    "express": "^4.16.3",
+    "serialport": "^6.2.0"
   }
 }
